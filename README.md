@@ -57,6 +57,8 @@ $ sudo launchctl unload -w /Library/LaunchDaemons/com.example.toggleInternalKeyb
 
 ## When that does not work
 
+### Cannot detect external keyboard connection
+
 The script (`toggleInternalKeyboard.sh`) check an external keyboard connection by `ioreg` command. We can retrieve the list of connected USB devices by this command like the following.
 
 ``` shell
@@ -83,6 +85,23 @@ If my script doesn' work well, you can execute `ioreg` command like above, confi
 IS_CONNECTED=`ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Root.*' | grep "USB Keyboard"` 
 ...
 ```
+
+### Cannot disable internal keyboard
+
+My script use `kextunload` command to disable internal keyboard. This command is introduced at [Disable Mac OS X Keyboard (built-in only)](https://gist.github.com/JohnMurray/1869020). But, this command sometimes doesn't work well.
+
+If your internal keyboard is still enabled despite the notification, you'd better try the command as follows and check the result.
+
+``` shell
+$ sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext/
+(kernel) Can't unload kext com.apple.driver.AppleUSBTCKeyboard; classes have instances:
+(kernel)     Kext com.apple.driver.AppleUSBTCKeyboard class AppleUSBTCKeyboard has 1 instance.
+Failed to unload com.apple.driver.AppleUSBTCKeyboard - (libkern/kext) kext is in use or retained (cannot unload).
+```
+
+In above case, we get the error. I don't know the cause of this error...
+But I tried restart macbook, I can disable internal keyboard without error again.
+So if you get above error, you'd better restart laptop and try again.
 
 ## LICENSE
 
