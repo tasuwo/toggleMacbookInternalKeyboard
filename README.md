@@ -14,7 +14,7 @@ My solution's rough procedure is as follows:
 
 ## How to use
 
-1. Edit the script (`toggleInternalKeyboard.sh`') to insert your password
+1．Edit the script (`toggleInternalKeyboard.sh`') to insert your password
 
 ``` shell
 ...
@@ -31,7 +31,7 @@ else
 fi
 ```
 
-2. Move files to suitable place
+2．Move files to suitable place
 
 ``` shell
 $ chmod +x toggleInternalKeyboard.sh
@@ -43,7 +43,7 @@ $ mv notifyEnableInternalKeyboard.app /usr/local/bin/
 $ sudo mv com.example.toggleInternalKeyboard.plist /Library/LaunchDaemons/
 ```
 
-3. Launch daemon
+3．Launch daemon
 
 ``` shell
 $ sudo launchctl load -w /Library/LaunchDaemons/com.example.toggleInternalKeyboard.plist
