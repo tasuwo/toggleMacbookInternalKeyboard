@@ -1,5 +1,13 @@
 # Toggle Macbook Internal Keyboard
 
+## WARNING: These scripts are no longer worked
+
+`kextunload` to `AppleUSBTCKeyboard.kext` is not working.
+
+> https://github.com/tekezo/Karabiner-Elements/issues/95#issuecomment-255989636
+
+Instead of this repository, you can use [tekezo/Karabiner-Elements](https://github.com/tekezo/Karabiner-Elements).
+
 ## What is this?
 
 Because Karabiner does not work on macOS Sierra, we cannot disable macbook's internal keyboard automatically at the time of external keyboard connection.
